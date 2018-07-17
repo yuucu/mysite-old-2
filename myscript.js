@@ -1,7 +1,5 @@
-var elem = document.getElementById('elem');
-elem.addEventListener('click', function(){
-	anime({
-		targets: elem,
-		translateX: 250
-	})
-})
+anime({
+  targets: '.square',
+  translateX: 250
+});
+
