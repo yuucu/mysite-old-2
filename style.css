@@ -3,9 +3,12 @@
   padding: 0px;
 }
 
+html, body {
+  height:100%;
+}
+
 .wrapper {
-  min-width: 760px;
-  width; 100%;
+  height:100%;
   margin: 8px;
 }
 
@@ -18,17 +21,20 @@
 
 #header {
   background: red;
+  height: 12%;
   opacity: 0.4;
 }
 
 #main {
-  height: 540px;
-  text-align: center;
+  position: relative;
+  height: 76%;
 }
 
 #footer {
+  height: 12%;
+  width: 100%;
+  text-align: center;
   background: red;
-  height: 140px;
   opacity: 0.2;
 }
 
@@ -36,10 +42,19 @@
   position: absolute;
   top:0;
   left:0;
-  height:100%;
-  width:100%;
+
+  height:100vh;
+  width:100vw;
 
   background: red;
   opacity: 0.1;
 }
+
+.main-str {
+  position: absolute;
+  top: 16%;
+  text-align: center;
+  width: 100%;
+}
+  
 
