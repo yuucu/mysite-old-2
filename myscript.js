@@ -42,7 +42,7 @@ for( let i=0; i<screen.clientWidth / squareInterval; i++) {
     if (timer > 0) {
       clearTimeout(timer);
     }
- 
+
     timer = setTimeout(function () {
       screen.innerHTML = "";
 

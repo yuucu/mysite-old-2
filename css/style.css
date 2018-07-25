@@ -23,20 +23,20 @@ li {
 
 .square {
   position: fixed;
-	background-color: #000;
-	width: 4px;
-	height: 4px;
+  background-color: #000;
+  width: 4px;
+  height: 4px;
 }
 
 .cross {
   position: fixed;
   height: 7px;
   width: 1px;
-	background-color: #000;
+  background-color: #000;
 }
 
 .cross::after {
-	background-color: #000;
+  background-color: #000;
   content: "";
   position: absolute;
   height: 1px;
@@ -46,7 +46,7 @@ li {
 }
 
 #header {
-/*  background: red;
+  /*  background: red;
   opacity: 0.4; */
   height: 12%;
 }
@@ -76,7 +76,7 @@ li {
   /*
   background: red;
   opacity: 0.1;
-  */
+   */
   opacity: 0.1;
 }
 
@@ -86,5 +86,5 @@ li {
   text-align: center;
   width: 100%;
 }
-  
+
 
