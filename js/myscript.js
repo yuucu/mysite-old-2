@@ -2,12 +2,12 @@
 const screen = document.getElementById('background-screen');
 const squareInterval = 80;
 
-var square = document.createElement('div');
-square.style.top = "100px";
-square.style.height = "100px";
-square.style.width = "100px";
-square.setAttribute('class', 'square');
-screen.appendChild(square);
+//var square = document.createElement('div');
+//square.style.top = "100px";
+//square.style.height = "100px";
+//square.style.width = "100px";
+//square.setAttribute('class', 'square');
+//screen.appendChild(square);
 
 
 anime({
