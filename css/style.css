@@ -16,26 +16,26 @@ body {
   margin: 8px;
 }
 
-header { height: 12%; }
-header ul { list-style-type: none; }
-header li {
+#header { height: 12%; }
+#header ul { list-style-type: none; }
+#header li {
   display: inline-block;
   font-size: 12px;
 }
-header a {
+#header a {
   text-decoration: none;
   color: inherit;
 }
-header a:hover {
+#header a:hover {
   color: royalblue;
 }
-header #header-nav {
+#header #header-nav {
   width: 400px;
   position: absolute;
   right: 8%;
   top: 6%;
 }
-header .text-wrap {
+#header .text-wrap {
   width: 56px;
   height: 30px;
   text-align: center;
@@ -47,14 +47,14 @@ header .text-wrap {
   height: 76%;
 }
 
-.main-str {
+#main .main-str {
   position: absolute;
   top: 24%;
   text-align: center;
   width: 100%;
 }
 
-footer {
+#footer {
   height: 12%;
   text-align: center;
 }
