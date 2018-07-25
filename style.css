@@ -7,6 +7,10 @@ html, body {
   height: 100%;
 }
 
+body {
+  font-family: 'Source Code Pro', sans-serif;
+}
+
 .wrapper {
   height: 100%;
   margin: 8px;
