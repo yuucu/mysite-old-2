@@ -11,6 +11,11 @@ body {
   font-family: 'Source Code Pro', sans-serif;
 }
 
+li {
+  display: inline-block;
+}
+
+
 .wrapper {
   height: 100%;
   margin: 8px;
@@ -41,8 +46,8 @@ body {
 }
 
 #header {
-  /*background: red;
-  opacity: 0.4;*/
+/*  background: red;
+  opacity: 0.4; */
   height: 12%;
 }
 
@@ -61,13 +66,17 @@ body {
 
 #background-screen {
   position: absolute;
+  z-index: -1;
   top: 0;
   left: 0;
 
   height: 100vh;
   width: 100vw;
 
-  /*background: red;*/
+  /*
+  background: red;
+  opacity: 0.1;
+  */
   opacity: 0.1;
 }
 
