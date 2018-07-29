@@ -1,13 +1,6 @@
-
-const screen = document.getElementById('background-screen');
-const squareInterval = 80;
-
-//var square = document.createElement('div');
-//square.style.top = "100px";
-//square.style.height = "100px";
-//square.style.width = "100px";
-//square.setAttribute('class', 'square');
-//screen.appendChild(square);
+var mysite = mysite || {};
+mysite.screen = document.getElementById('background-screen');
+mysite.figureInterval = 80;
 
 
 anime({
@@ -16,27 +9,15 @@ anime({
 });
 
 
-
-
-// figure = ['square', 'cross'];
-function createFigure(i, j, figure) {
-  square = document.createElement('div');
-  square.style.top = j + "px";
-  square.style.left = i + "px";
-  square.setAttribute('class', figure);
-  return square;
-}
-
 // init backscreen 
-for( let i=0; i<screen.clientWidth / squareInterval; i++) {
-  for( let j=0; j<screen.clientHeight / squareInterval; j++) {
-    square = createFigure(squareInterval * i, squareInterval * j, 'square');
-    screen.appendChild(square);
+for( let i=0; i<mysite.screen.clientWidth / mysite.figureInterval; i++) {
+  for( let j=0; j<mysite.screen.clientHeight / mysite.figureInterval; j++) {
+    let square = new Square(document, mysite.figureInterval*i, mysite.figureInterval*j, 4,4,"black");
+    mysite.screen.appendChild(square.getFigure());
   }
 }
 
-var sssss = new Square(document,10, 10, 100, 100, "red"); 
-screen.appendChild(sssss.getFigure());
+
 
 // resize window
 (function () {
@@ -47,12 +28,12 @@ screen.appendChild(sssss.getFigure());
     }
 
     timer = setTimeout(function () {
-      screen.innerHTML = "";
+      mysite.screen.innerHTML = "";
 
-      for( let i=0; i<screen.clientWidth / squareInterval; i++) {
-        for( let j=0; j<screen.clientHeight / squareInterval; j++) {
-          square = createFigure(i, j, 'cross');
-          screen.appendChild(square);
+      for( let i=0; i<mysite.screen.clientWidth / mysite.figureInterval; i++) {
+        for( let j=0; j<mysite.screen.clientHeight / mysite.figureInterval; j++) {
+          cross = new Cross(document, mysite.figureInterval*i, mysite.figureInterval*j, 7, 1, 'black');
+          mysite.screen.appendChild(cross.getFigure());
         }
       }
 
