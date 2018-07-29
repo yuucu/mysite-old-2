@@ -21,8 +21,8 @@ anime({
 // figure = ['square', 'cross'];
 function createFigure(i, j, figure) {
   square = document.createElement('div');
-  square.style.top = squareInterval * j + "px";
-  square.style.left = squareInterval * i + "px";
+  square.style.top = j + "px";
+  square.style.left = i + "px";
   square.setAttribute('class', figure);
   return square;
 }
@@ -30,10 +30,13 @@ function createFigure(i, j, figure) {
 // init backscreen 
 for( let i=0; i<screen.clientWidth / squareInterval; i++) {
   for( let j=0; j<screen.clientHeight / squareInterval; j++) {
-    square = createFigure(i, j, 'square');
+    square = createFigure(squareInterval * i, squareInterval * j, 'square');
     screen.appendChild(square);
   }
 }
+
+var sssss = new Square(document,10, 10, 100, 100, "red"); 
+screen.appendChild(sssss.getFigure());
 
 // resize window
 (function () {
