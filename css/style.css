@@ -16,7 +16,6 @@ body{
 
 #header { 
   height: 100px;
-  margin-bottom: 80px;
 }
 #header ul { list-style-type: none; }
 #header li {
@@ -49,7 +48,6 @@ body{
 }
 
 #footer {
-  margin-top: 80px;
   text-align: center;
 }
 
@@ -62,10 +60,10 @@ body{
   width: 100vw;
 }
 
-.works-container {
+#works-container {
   max-width: 788px;
   letter-spacing: -.4em;
-  margin: 40px auto;
+  margin: auto;
 }
 
 .work {

@@ -16,7 +16,8 @@ window.onload = function() {
   createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
-
+  pageInit();
+  
   // button click
   mysite.navHome.onclick = function() {
     setHomePage();
@@ -54,6 +55,7 @@ anime({
       clearTimeout(timer);
     }
     timer = setTimeout(function () {
+      pageInit();
       switch(mysite.theme) {
         case 'square':
           createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
@@ -89,6 +91,12 @@ function createCrossBack(target, interval, position, color) {
   }
 }
 
+// margin control
+function pageInit() {
+  document.getElementById('header').style.marginBottom = window.innerHeight/100 * 8;
+  document.getElementById('footer').style.marginTop = window.innerHeight/100 * 8;
+  document.getElementById('works-container').style.marginTop = window.innerHeight/100 * 8;
+}
 
 // move page
 function setHomePage() {
