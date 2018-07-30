@@ -1,3 +1,6 @@
+  /*
+    index.html
+   */
 * {
   margin: 0px;
   padding: 0px;
@@ -13,20 +16,14 @@ body{
 
 #header { 
   height: 100px;
-  margin-bottom: 72px;
+  margin-bottom: 80px;
 }
 #header ul { list-style-type: none; }
 #header li {
   display: inline-block;
   font-size: 12px;
 }
-#header a {
-  text-decoration: none;
-  color: inherit;
-}
-#header a:hover {
-  color: royalblue;
-}
+
 #header #header-nav {
   position: absolute;
   right: 12%;
@@ -38,17 +35,21 @@ body{
   line-height: 30px;
   text-align: center;
   margin: 0 12px;
+
+  cursor: pointer;
 }
 
-#main-index {
+#header .text-wrap:hover {
+  color: royalblue;
 }
+
 
 .main-str {
   text-align: center;
 }
 
 #footer {
-  margin-top: 72px;
+  margin-top: 80px;
   text-align: center;
 }
 
@@ -78,7 +79,7 @@ body{
   margin: 16px;
 
   background-color: white;
-  border:1px solid;
+  box-shadow: 2px 2px 2px 2px #dcdcdc;
 }
 
 /*
@@ -107,3 +108,47 @@ top: 3px;
 }
  */
 
+  /*
+    about.html
+   */
+  pre {
+    font-family: 'Source Code Pro', sans-serif;
+  }
+
+
+  .about {
+    letter-spacing: -.4em;
+    font-size:12px;
+    position: relative;
+    width: 512px;
+    margin: 0 auto;
+    top: 8%;
+  }
+
+  .column1, .column2 {
+    letter-spacing: normal;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .column1 {
+    margin: 0 16px;
+  }
+
+  .column2 {
+  }
+
+  .profile, .skillset, .contact {
+    padding: 8px;
+    margin: 16px auto;
+  }
+  .profile {
+    width: 240px;
+  }
+
+  .skillset {
+    width: 192px;
+  }
+  .contact {
+    width: 248px;
+  }

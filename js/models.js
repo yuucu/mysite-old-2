@@ -1,14 +1,3 @@
-//var Figure = (function() {
-//
-//  var Figure = function() {
-//    this.x = x;
-//    this.y = y;
-//  };
-//
-//  var p = Figure.prototype;
-//}
-
-
 class Figure {
   constructor(document, x, y, position, color) {
     this.x = x;
@@ -16,8 +5,7 @@ class Figure {
     this.figure = document.createElement("div");
     this.figure.style.top = y + "px";
     this.figure.style.left = x + "px";
-    //this.figure.style.position = "fixed";
-    this.figure.style.position = "absolute";
+    this.figure.style.position = position;
     this.figure.style.backgroundColor = color;
   }
 }
