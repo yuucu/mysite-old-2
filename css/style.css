@@ -4,7 +4,6 @@
 }
 
 html, body {
-  height: 100%;
 }
 
 body{
@@ -12,12 +11,12 @@ body{
 }
 
 #wrapper {
-  height: 100%;
   margin: 8px;
 }
 
 #header { 
-  height: 12%; 
+  height: 100px;
+  margin-bottom: 64px;
 }
 #header ul { list-style-type: none; }
 #header li {
@@ -32,9 +31,8 @@ body{
   color: royalblue;
 }
 #header #header-nav {
-  width: 400px;
   position: absolute;
-  right: 8%;
+  right: 12%;
   top: 8%;
 }
 #header .text-wrap {
@@ -46,9 +44,6 @@ body{
 }
 
 #main-index {
-  position: relative;
-  height: 76%;
-  top: 12%;
 }
 
 .main-str {
@@ -56,7 +51,7 @@ body{
 }
 
 #footer {
-  height: 12%;
+  margin-top: 64px;
   text-align: center;
 }
 
@@ -72,8 +67,7 @@ body{
 
 .works-container {
   position: relative;
-  top: 8%;
-  height: 64%;
+  top: 40px;
   max-width: 780px;
   letter-spacing: -.4em;
   margin: auto;
