@@ -79,12 +79,12 @@ window.onload = function() {
 
 // print random square function
 function randomSquarePrintStop() {
-  mysite.randomSquarePrint.innerHTML = "<p>-*- create random square -*-</p>";
+  mysite.randomSquarePrint.innerHTML = "<p>** create random square **</p>";
   mysite.randomSquarePrint.innerHTML += "<p>square_num: " + mysite.randomSquareNum + "</p>";
   mysite.randomSquarePrint.innerHTML += "<p>- stop</p>";
 }
 function randomSquarePrintRun() {
-  mysite.randomSquarePrint.innerHTML = "<p>-*- create random square -*-</p>";
+  mysite.randomSquarePrint.innerHTML = "<p>** create random square **</p>";
   mysite.randomSquarePrint.innerHTML += "<p>square_num: " + mysite.randomSquareNum + "</p>";
   mysite.randomSquarePrint.innerHTML += "<p>- running...</p>";
 }
