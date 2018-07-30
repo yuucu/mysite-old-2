@@ -1,6 +1,8 @@
 var mysite = mysite || {};
 
 window.onload = function() {
+  pageInit();
+
   mysite.screen = document.getElementById('background-screen');
   mysite.figureInterval = 80;
   mysite.navHome = document.getElementById('nav-home');
@@ -11,12 +13,10 @@ window.onload = function() {
   mysite.divCross = document.getElementById('cross-screen');
   mysite.theme = 'square';
 
-  // init 
-  setHomePage();
+  // div button print 
   createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
-  pageInit();
   
   // button click
   mysite.navHome.onclick = function() {
@@ -68,7 +68,7 @@ anime({
   };
 }());
 
-// create figure
+// print back screen
 function createSquareBack(target, interval, size, position, color) {
   target.innerHTML = "";
   mysite.theme = 'square';
