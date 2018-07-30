@@ -1,4 +1,5 @@
 var mysite = mysite || {}; 
+
 window.onload = function() {
   // margin control - - - - 
   pageInit();
@@ -21,13 +22,15 @@ window.onload = function() {
   mysite.randomSquarePrint = document.getElementById('random-square-print');
   mysite.randomSquareId = '';
   mysite.randomSquareNum = 0;
+
+  mysite.terminal = new Terminal(document);
   // - - - - - - - - - - - - - - 
 
   // div button print - - - - -
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
   for(let i=0;i<100;i++) {
-    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', createRandomColor());
+    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', 'random', false);
   }
   // - - - - - - - - - - - - - - 
 
@@ -50,26 +53,32 @@ window.onload = function() {
   // work button
   mysite.divWhite.onclick = function() {
     mainScreenClear();
+    mysite.terminal.update('set white');
   }
 
   mysite.divSquare.onclick = function(){
     createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
+    mysite.terminal.update('set square');
   }
   mysite.divCross.onclick = function(){
     createCrossBack(mysite.screen, mysite.figureInterval, 'fixed', '#dddddd');
+    mysite.terminal.update('set cross');
   }
 
   mysite.divRandomSquare.onclick = function() {
     // add 1
-    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', createRandomColor());
+    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', 'random');
     if(mysite.randomSquareRunning) {
       clearInterval(mysite.randomSquareId);
       mysite.randomSquareRunning = false;
       randomSquarePrintStop();
+      mysite.terminal.updateNormal('square_num: ' + mysite.randomSquareNum);
+      mysite.terminal.updateNormal('^C');
     } else {
       mysite.theme = 'randomSquare';
-      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', createRandomColor())", 4);
+      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', 'random')", 4);
       mysite.randomSquareRunning = true;
+      mysite.terminal.update('start random_square &');
     }
 
   }
@@ -144,9 +153,12 @@ function createCrossBack(target, interval, position, color) {
   }
 }
 
-function createRandomSquare(target, minSize, maxSize, position, color) {
+function createRandomSquare(target, minSize, maxSize, position, color, terminal=true) {
   mysite.randomSquareNum += 1;
   randomSquarePrintRun();
+  if(terminal) {
+  mysite.terminal.updateOver('square_num: ' + mysite.randomSquareNum);
+  }
 
   let size = Math.floor(Math.random() * (maxSize-minSize)) + minSize;
   let x = Math.floor(Math.random() * target.clientWidth);
@@ -158,13 +170,20 @@ function createRandomSquare(target, minSize, maxSize, position, color) {
 
 // margin control
 function pageInit() {
-  document.getElementById('header').style.marginBottom = window.innerHeight/100 * 8;
+  document.getElementById('header').style.marginBottom = window.innerHeight/100 * 6;
   document.getElementById('footer').style.marginTop = window.innerHeight/100 * 8;
-  document.getElementById('works-container').style.marginTop = window.innerHeight/100 * 8;
+  document.getElementById('main-home').style.marginTop = window.innerHeight/100 * 6;
+  document.getElementById('main-about').style.marginTop = window.innerHeight/100 * 6;
+  document.getElementById('main-works').style.marginTop = window.innerHeight/100 * 6;
+  document.getElementById('main-system').style.marginTop = window.innerHeight/100 * 6;
 }
 
 // main screen init
 function mainScreenClear() {
+  if(mysite.randomSquareRunning) {
+    clearInterval(mysite.randomSquareId);
+    mysite.randomSquareRunning = false;
+  }
   mysite.screen.innerHTML = "";
   mysite.theme = '';
   mysite.randomSquareNum = 0;
@@ -178,6 +197,7 @@ function setHomePage() {
   document.getElementById('main-works').style.display = 'none';
   document.getElementById('main-about').style.display = 'none';
   document.getElementById('main-system').style.display = 'none';
+  mysite.terminal.setDir('home');
 }
 
 function setWorksPage() {
@@ -185,24 +205,21 @@ function setWorksPage() {
   document.getElementById('main-works').style.display = 'block';
   document.getElementById('main-about').style.display = 'none';
   document.getElementById('main-system').style.display = 'none';
+  mysite.terminal.setDir('works');
 }
 function setAboutPage() {
   document.getElementById('main-home').style.display = 'none';
   document.getElementById('main-works').style.display = 'none';
   document.getElementById('main-about').style.display = 'block';
   document.getElementById('main-system').style.display = 'none';
+  mysite.terminal.setDir('about');
 }
 function setSystemPage() {
   document.getElementById('main-home').style.display = 'none';
   document.getElementById('main-works').style.display = 'none';
   document.getElementById('main-about').style.display = 'none';
   document.getElementById('main-system').style.display = 'block';
+  mysite.terminal.setDir('system');
 }
 
-function createRandomColor() {
-  var randomColor = "#";
-  for(var i = 0; i < 6; i++) {
-    randomColor += (16*Math.random() | 0).toString(16);
-  }
-  return randomColor;
-}
+

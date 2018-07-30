@@ -44,9 +44,16 @@ body{
 }
 
 
-.main-str {
-  font-size: 12px;
-  text-align: center;
+#terminal {
+  font-size: 10px;
+  width: 288px;
+  height: 156px;
+  margin: auto;
+  padding: 0 4px;
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  opacity: 0.9;
 }
 
 #footer {
