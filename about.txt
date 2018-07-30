@@ -1,0 +1,51 @@
+Profile {
+  name   = satokibi;
+  age    = 22;
+  birth  = 1995.10.05;
+  gender = Male;
+  locate = Fukuoka,JP;
+  message = "
+    始めまして。
+    satokibiです。
+    好きな食べ物は、卵料理と甘い物です。
+    いつもは、pythonで自然言語処理や機械学習をしています。
+    最近 フロントエンド系の技術も勉強しようと思いこのサイトを作成しました。
+    よろしくおねがいします。
+  "
+}
+
+SkillSet {
+  language = [
+    Japanese,
+    English...?
+  ]
+
+  programming_language = [
+    Python,
+    Java,
+    JavaScript,
+    shellscript,
+    C,
+    C#
+  ]
+
+  web_language = [
+    html,
+    css
+  ]
+
+  tools = [
+    vim,
+    PyCharm,
+    IntelliJ,
+    Git,
+    zsh,
+    Unity
+  ]
+}
+
+Contact {
+  twitter = shugar_guitar;
+  github = satokibi;
+  email = dummy@d.co.jp;
+}

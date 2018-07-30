@@ -1,0 +1,44 @@
+pre {
+  font-family: 'Source Code Pro', sans-serif;
+}
+
+#main-about {
+  height: 76%;
+}
+
+.about {
+  letter-spacing: -.4em;
+  font-size:12px;
+  position: relative;
+  width: 568px;
+  margin: 0 auto;
+  top: 8%;
+}
+
+.column1, .column2 {
+  letter-spacing: normal;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.column1 {
+  margin: 0 16px;
+}
+
+.column2 {
+}
+
+.profile, .skillset, .contact {
+  padding: 8px;
+  margin: 16px 0;
+}
+.profile {
+  width: 248px;
+}
+
+.skillset {
+  width: 232px;
+}
+.contact {
+  width: 248px;
+}

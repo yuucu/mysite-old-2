@@ -7,7 +7,7 @@ html, body {
   height: 100%;
 }
 
-body {
+body{
   font-family: 'Source Code Pro', sans-serif;
 }
 
@@ -30,23 +30,24 @@ body {
   color: royalblue;
 }
 #header #header-nav {
-  width: 320px;
+  width: 400px;
   position: absolute;
-  right: 12%;
-  top: 6%;
+  right: 8%;
+  top: 8%;
 }
 #header .text-wrap {
   width: 56px;
   height: 30px;
   line-height: 30px;
   text-align: center;
+  margin: 0 12px;
 }
 
-#main {
+#main-index {
   position: relative;
   height: 76%;
 }
-#main .main-str {
+#main-index .main-str {
   position: absolute;
   top: 20%;
   text-align: center;
