@@ -171,6 +171,8 @@ main html
  */
 
 #random-square-print {
+  position: absolute;
+  z-index: 8;
   font-size: 8px;
   background-color: white;
 }

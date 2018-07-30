@@ -27,7 +27,7 @@ window.onload = function() {
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
   for(let i=0;i<100;i++) {
-    createRandomSquare(mysite.divRandomSquare, 36, 0, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', createRandomColor());
+    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', createRandomColor());
   }
   // - - - - - - - - - - - - - - 
 
@@ -61,14 +61,14 @@ window.onload = function() {
 
   mysite.divRandomSquare.onclick = function() {
     // add 1
-    createRandomSquare(mysite.divRandomSquare, 32, 0, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', createRandomColor());
+    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', createRandomColor());
     if(mysite.randomSquareRunning) {
       clearInterval(mysite.randomSquareId);
       mysite.randomSquareRunning = false;
       randomSquarePrintStop();
     } else {
       mysite.theme = 'randomSquare';
-      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, 0,0,Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', createRandomColor())", 4);
+      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', createRandomColor())", 4);
       mysite.randomSquareRunning = true;
     }
 
@@ -79,14 +79,14 @@ window.onload = function() {
 
 // print random square function
 function randomSquarePrintStop() {
-  mysite.randomSquarePrint.innerHTML = "-*- create random square -*-</br>";
-  mysite.randomSquarePrint.innerHTML += "square_num: " + mysite.randomSquareNum + "</br>";
-  mysite.randomSquarePrint.innerHTML += "stop";
+  mysite.randomSquarePrint.innerHTML = "<p>-*- create random square -*-</p>";
+  mysite.randomSquarePrint.innerHTML += "<p>square_num: " + mysite.randomSquareNum + "</p>";
+  mysite.randomSquarePrint.innerHTML += "<p>- stop</p>";
 }
 function randomSquarePrintRun() {
-  mysite.randomSquarePrint.innerHTML = "-*- create random square -*-</br>";
-  mysite.randomSquarePrint.innerHTML += "square_num: " + mysite.randomSquareNum + "</br>";
-  mysite.randomSquarePrint.innerHTML += "running...";
+  mysite.randomSquarePrint.innerHTML = "<p>-*- create random square -*-</p>";
+  mysite.randomSquarePrint.innerHTML += "<p>square_num: " + mysite.randomSquareNum + "</p>";
+  mysite.randomSquarePrint.innerHTML += "<p>- running...</p>";
 }
 // - - - - - - - - - - - - - - 
 
@@ -144,13 +144,13 @@ function createCrossBack(target, interval, position, color) {
   }
 }
 
-function createRandomSquare(target, minTop, minLeft, minSize, maxSize, position, color) {
+function createRandomSquare(target, minSize, maxSize, position, color) {
   mysite.randomSquareNum += 1;
   randomSquarePrintRun();
 
   let size = Math.floor(Math.random() * (maxSize-minSize)) + minSize;
-  let x = Math.floor(Math.random() * target.clientWidth) + minLeft;
-  let y = Math.floor(Math.random() * target.clientHeight) + minTop;
+  let x = Math.floor(Math.random() * target.clientWidth);
+  let y = Math.floor(Math.random() * target.clientHeight);
   let randSquare = new Square(document, x, y, size, size, position, color);
 
   target.appendChild(randSquare.getFigure());
