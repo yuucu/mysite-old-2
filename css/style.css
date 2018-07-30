@@ -16,7 +16,9 @@ body{
   margin: 8px;
 }
 
-#header { height: 12%; }
+#header { 
+  height: 12%; 
+}
 #header ul { list-style-type: none; }
 #header li {
   display: inline-block;
@@ -46,12 +48,11 @@ body{
 #main-index {
   position: relative;
   height: 76%;
+  top: 12%;
 }
-#main-index .main-str {
-  position: absolute;
-  top: 20%;
+
+.main-str {
   text-align: center;
-  width: 100%;
 }
 
 #footer {
@@ -67,6 +68,24 @@ body{
   height: 100vh;
   width: 100vw;
   opacity: 0.1;
+}
+
+.works-container {
+  position: relative;
+  top: 8%;
+  height: 64%;
+  max-width: 780px;
+  letter-spacing: -.4em;
+  margin: auto;
+}
+
+.work {
+  display: inline-block;
+  letter-spacing: normal;
+  width: 160px;
+  height: 160px;
+  background-color:black;
+  margin: 16px;
 }
 
 /*
