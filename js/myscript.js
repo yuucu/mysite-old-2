@@ -17,7 +17,7 @@ window.onload = function() {
   createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
-  
+
   // button click
   mysite.navHome.onclick = function() {
     setHomePage();
@@ -37,6 +37,11 @@ window.onload = function() {
   }
   mysite.divCross.onclick = function(){
     createCrossBack(mysite.screen, mysite.figureInterval, 'fixed', '#dddddd');
+  }
+
+  document.getElementById('add-rand-square').onclick = function() {
+    let randomColor = createRandomColor();
+    createRandomSquare(mysite.screen, 1, 100, 'fixed', randomColor);
   }
 }
 
@@ -85,10 +90,21 @@ function createCrossBack(target, interval, position, color) {
   mysite.theme = 'cross';
   for( let i=0; i<target.clientWidth / interval; i++) {
     for( let j=0; j<target.clientHeight / interval; j++) {
-      cross = new Cross(document, interval*i+16, interval*j+16, 7, 1, position, color);
+      let cross = new Cross(document, interval*i+16, interval*j+16, 7, 1, position, color);
       target.appendChild(cross.getFigure());
     }
   }
+}
+
+function createRandomSquare(target, minSize, maxSize, position, color) {
+  mysite.theme = 'randomSquare';
+
+  let size = Math.floor(Math.random() * (maxSize-minSize)) + minSize;
+  let x = Math.floor(Math.random() * target.clientWidth)
+    let y = Math.floor(Math.random() * target.clientHeight)
+    let randSquare = new Square(document, x, y, size, size, position, color);
+
+  target.appendChild(randSquare.getFigure());
 }
 
 // margin control
@@ -107,20 +123,29 @@ function setHomePage() {
 }
 
 function setWorksPage() {
-    document.getElementById('main-home').style.display = 'none';
-    document.getElementById('main-works').style.display = 'block';
-    document.getElementById('main-about').style.display = 'none';
-    document.getElementById('main-system').style.display = 'none';
+  document.getElementById('main-home').style.display = 'none';
+  document.getElementById('main-works').style.display = 'block';
+  document.getElementById('main-about').style.display = 'none';
+  document.getElementById('main-system').style.display = 'none';
 }
 function setAboutPage() {
-    document.getElementById('main-home').style.display = 'none';
-    document.getElementById('main-works').style.display = 'none';
-    document.getElementById('main-about').style.display = 'block';
-    document.getElementById('main-system').style.display = 'none';
+  document.getElementById('main-home').style.display = 'none';
+  document.getElementById('main-works').style.display = 'none';
+  document.getElementById('main-about').style.display = 'block';
+  document.getElementById('main-system').style.display = 'none';
 }
 function setSystemPage() {
-    document.getElementById('main-home').style.display = 'none';
-    document.getElementById('main-works').style.display = 'none';
-    document.getElementById('main-about').style.display = 'none';
-    document.getElementById('main-system').style.display = 'block';
+  document.getElementById('main-home').style.display = 'none';
+  document.getElementById('main-works').style.display = 'none';
+  document.getElementById('main-about').style.display = 'none';
+  document.getElementById('main-system').style.display = 'block';
+}
+
+function createRandomColor() {
+  var randomColor = "#";
+  for(var i = 0; i < 6; i++) {
+    randomColor += (16*Math.random() | 0).toString(16);
+  }
+  console.log(randomColor);
+  return randomColor;
 }
