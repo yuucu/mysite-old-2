@@ -1,8 +1,10 @@
-var mysite = mysite || {};
-
+var mysite = mysite || {}; 
 window.onload = function() {
+  // margin control - - - - 
   pageInit();
+  // - - - - - - - - - - - 
 
+  // set buttons var
   mysite.screen = document.getElementById('background-screen');
   mysite.figureInterval = 80;
   mysite.navHome = document.getElementById('nav-home');
@@ -11,14 +13,25 @@ window.onload = function() {
   mysite.navSystem = document.getElementById('nav-system');
   mysite.divSquare = document.getElementById('square-screen');
   mysite.divCross = document.getElementById('cross-screen');
-  mysite.theme = 'square';
+  mysite.divWhite = document.getElementById('white-screen');
+  mysite.divRandomSquare = document.getElementById('random-square');
+  mysite.theme = '';
 
-  // div button print 
-  createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
+  mysite.randomSquareRunning = false;
+  mysite.randomSquarePrint = document.getElementById('random-square-print');
+  mysite.randomSquareId = '';
+  mysite.randomSquareNum = 0;
+  // - - - - - - - - - - - - - - 
+
+  // div button print - - - - -
   createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
   createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
+  for(let i=0;i<100;i++) {
+    createRandomSquare(mysite.divRandomSquare, 36, 0, Math.floor(Math.random()*1), Math.floor(Math.random()*25), 'absolute', createRandomColor());
+  }
+  // - - - - - - - - - - - - - - 
 
-  // button click
+  // header nav button - - - - -
   mysite.navHome.onclick = function() {
     setHomePage();
   }
@@ -31,6 +44,13 @@ window.onload = function() {
   mysite.navSystem.onclick = function() {
     setSystemPage();
   }
+  // - - - - - - - - - - - - - - 
+
+
+  // work button
+  mysite.divWhite.onclick = function() {
+    mainScreenClear();
+  }
 
   mysite.divSquare.onclick = function(){
     createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
@@ -39,12 +59,36 @@ window.onload = function() {
     createCrossBack(mysite.screen, mysite.figureInterval, 'fixed', '#dddddd');
   }
 
-  document.getElementById('add-rand-square').onclick = function() {
-    let randomColor = createRandomColor();
-    createRandomSquare(mysite.screen, 1, 100, 'fixed', randomColor);
+  mysite.divRandomSquare.onclick = function() {
+    // add 1
+    createRandomSquare(mysite.divRandomSquare, 32, 0, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', createRandomColor());
+    if(mysite.randomSquareRunning) {
+      clearInterval(mysite.randomSquareId);
+      mysite.randomSquareRunning = false;
+      randomSquarePrintStop();
+    } else {
+      mysite.theme = 'randomSquare';
+      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, 0,0,Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', createRandomColor())", 4);
+      mysite.randomSquareRunning = true;
+    }
+
   }
+  // - - - - - - - - - - - - - - 
+  mainScreenClear();
 }
 
+// print random square function
+function randomSquarePrintStop() {
+  mysite.randomSquarePrint.innerHTML = "-*- create random square -*-</br>";
+  mysite.randomSquarePrint.innerHTML += "square_num: " + mysite.randomSquareNum + "</br>";
+  mysite.randomSquarePrint.innerHTML += "stop";
+}
+function randomSquarePrintRun() {
+  mysite.randomSquarePrint.innerHTML = "-*- create random square -*-</br>";
+  mysite.randomSquarePrint.innerHTML += "square_num: " + mysite.randomSquareNum + "</br>";
+  mysite.randomSquarePrint.innerHTML += "running...";
+}
+// - - - - - - - - - - - - - - 
 
 anime({
   targets: '.square',
@@ -62,6 +106,9 @@ anime({
     timer = setTimeout(function () {
       pageInit();
       switch(mysite.theme) {
+        case '':
+          mysite.screen.innerHTML = "";
+          break;
         case 'square':
           createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
           break;
@@ -73,9 +120,10 @@ anime({
   };
 }());
 
+
 // print back screen
 function createSquareBack(target, interval, size, position, color) {
-  target.innerHTML = "";
+  mainScreenClear();
   mysite.theme = 'square';
   for( let i=0; i<target.clientWidth / interval; i++) {
     for( let j=0; j<target.clientHeight / interval; j++) {
@@ -86,7 +134,7 @@ function createSquareBack(target, interval, size, position, color) {
 }
 
 function createCrossBack(target, interval, position, color) {
-  target.innerHTML = "";
+  mainScreenClear();
   mysite.theme = 'cross';
   for( let i=0; i<target.clientWidth / interval; i++) {
     for( let j=0; j<target.clientHeight / interval; j++) {
@@ -96,13 +144,14 @@ function createCrossBack(target, interval, position, color) {
   }
 }
 
-function createRandomSquare(target, minSize, maxSize, position, color) {
-  mysite.theme = 'randomSquare';
+function createRandomSquare(target, minTop, minLeft, minSize, maxSize, position, color) {
+  mysite.randomSquareNum += 1;
+  randomSquarePrintRun();
 
   let size = Math.floor(Math.random() * (maxSize-minSize)) + minSize;
-  let x = Math.floor(Math.random() * target.clientWidth)
-    let y = Math.floor(Math.random() * target.clientHeight)
-    let randSquare = new Square(document, x, y, size, size, position, color);
+  let x = Math.floor(Math.random() * target.clientWidth) + minLeft;
+  let y = Math.floor(Math.random() * target.clientHeight) + minTop;
+  let randSquare = new Square(document, x, y, size, size, position, color);
 
   target.appendChild(randSquare.getFigure());
 }
@@ -113,6 +162,15 @@ function pageInit() {
   document.getElementById('footer').style.marginTop = window.innerHeight/100 * 8;
   document.getElementById('works-container').style.marginTop = window.innerHeight/100 * 8;
 }
+
+// main screen init
+function mainScreenClear() {
+  mysite.screen.innerHTML = "";
+  mysite.theme = '';
+  mysite.randomSquareNum = 0;
+  randomSquarePrintStop();
+}
+
 
 // move page
 function setHomePage() {
@@ -146,6 +204,5 @@ function createRandomColor() {
   for(var i = 0; i < 6; i++) {
     randomColor += (16*Math.random() | 0).toString(16);
   }
-  console.log(randomColor);
   return randomColor;
 }

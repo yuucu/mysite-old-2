@@ -27,6 +27,7 @@ body{
   position: absolute;
   right: 12%;
   top: 8%;
+  background-color: white;
 }
 #header .text-wrap {
   width: 56px;
@@ -44,6 +45,7 @@ body{
 
 
 .main-str {
+  font-size: 12px;
   text-align: center;
 }
 
@@ -78,6 +80,7 @@ body{
 
   background-color: white;
   box-shadow: 2px 2px 2px 2px #dcdcdc;
+  overflow: hidden;
 }
 
 /*
@@ -139,6 +142,7 @@ pre {
 .profile, .skillset, .contact {
   padding: 8px;
   margin: 16px auto;
+  background-color: white;
 }
 .profile {
   width: 240px;
@@ -161,3 +165,12 @@ main html
 #main-works, #main-about, #main-system {
   display: none;
 } 
+
+/*
+ works
+ */
+
+#random-square-print {
+  font-size: 8px;
+  background-color: white;
+}
