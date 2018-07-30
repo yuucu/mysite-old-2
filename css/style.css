@@ -65,7 +65,7 @@ body{
 .works-container {
   position: relative;
   top: 40px;
-  max-width: 780px;
+  max-width: 788px;
   letter-spacing: -.4em;
   margin: auto;
 }
@@ -75,8 +75,10 @@ body{
   letter-spacing: normal;
   width: 160px;
   height: 160px;
-  background-color:black;
+  background-color: white;
   margin: 16px;
+  cursor: pointer;
+  border:1px solid;
 }
 
 /*
