@@ -1,7 +1,8 @@
 var mysite = mysite || {};
 mysite.screen = document.getElementById('background-screen');
 mysite.figureInterval = 80;
-
+mysite.divSquare = document.getElementById('square-screen');
+mysite.divCross = document.getElementById('cross-screen');
 
 anime({
   targets: '.square',
@@ -9,8 +10,10 @@ anime({
 });
 
 
-// init backscreen 
-createSquareBack();
+// init 
+createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
+createSquareBack(mysite.divSquare, 40, 4, 'absolute' ,'#dddddd');
+createCrossBack(mysite.divCross, 40, 'absolute' ,'#dddddd');
 
 
 // resize window
@@ -28,32 +31,31 @@ createSquareBack();
 }());
 
 // button click
-document.getElementById('square-screen').onclick = function(){
-  createSquareBack();
+mysite.divSquare.onclick = function(){
+  createSquareBack(mysite.screen, mysite.figureInterval, 4, 'fixed', '#dddddd');
 }
-document.getElementById('cross-screen').onclick = function(){
-  createCrossBack();
+mysite.divCross.onclick = function(){
+  createCrossBack(mysite.screen, mysite.figureInterval, 'fixed', '#dddddd');
 }
 
 
-
-// create backscreen
-function createSquareBack() {
-  mysite.screen.innerHTML = "";
-  for( let i=0; i<mysite.screen.clientWidth / mysite.figureInterval; i++) {
-    for( let j=0; j<mysite.screen.clientHeight / mysite.figureInterval; j++) {
-      let square = new Square(document, mysite.figureInterval*i, mysite.figureInterval*j, 4,4,"black");
-      mysite.screen.appendChild(square.getFigure());
+// create figure
+function createSquareBack(target, interval, size, position, color) {
+  target.innerHTML = "";
+  for( let i=0; i<target.clientWidth / interval; i++) {
+    for( let j=0; j<target.clientHeight / interval; j++) {
+      let square = new Square(document, interval*i+16, interval*j+16, size, size, position, color);
+      target.appendChild(square.getFigure());
     }
   }
 }
 
-function createCrossBack() {
-  mysite.screen.innerHTML = "";
-  for( let i=0; i<mysite.screen.clientWidth / mysite.figureInterval; i++) {
-    for( let j=0; j<mysite.screen.clientHeight / mysite.figureInterval; j++) {
-      cross = new Cross(document, mysite.figureInterval*i, mysite.figureInterval*j, 7, 1, 'black');
-      mysite.screen.appendChild(cross.getFigure());
+function createCrossBack(target, interval, position, color) {
+  target.innerHTML = "";
+  for( let i=0; i<target.clientWidth / interval; i++) {
+    for( let j=0; j<target.clientHeight / interval; j++) {
+      cross = new Cross(document, interval*i+16, interval*j+16, 7, 1, position, color);
+      target.appendChild(cross.getFigure());
     }
   }
 }

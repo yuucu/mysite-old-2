@@ -10,20 +10,21 @@
 
 
 class Figure {
-  constructor(document, x, y, color) {
+  constructor(document, x, y, position, color) {
     this.x = x;
     this.y = y;
     this.figure = document.createElement("div");
     this.figure.style.top = y + "px";
     this.figure.style.left = x + "px";
-    this.figure.style.position = "fixed";
+    //this.figure.style.position = "fixed";
+    this.figure.style.position = "absolute";
     this.figure.style.backgroundColor = color;
   }
 }
 
 class Square extends Figure {
-  constructor(document, x, y, width, height, color) {
-    super(document, x, y, color);
+  constructor(document, x, y, width, height, position,color) {
+    super(document, x, y, position, color);
     this.width = width;
     this.height = height;
     this.figure.style.width = width + "px";
@@ -36,8 +37,8 @@ class Square extends Figure {
 }
 
 class Cross extends Figure {
-  constructor(document, x, y, line_length, line_weight, color) {
-    super(document, x, y, color);
+  constructor(document, x, y, line_length, line_weight, position, color) {
+    super(document, x, y, position,  color);
     this.width = line_weight;
     this.height = line_length;
     this.color = color;
