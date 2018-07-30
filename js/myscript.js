@@ -170,12 +170,12 @@ function createRandomSquare(target, minSize, maxSize, position, color, terminal=
 
 // margin control
 function pageInit() {
-  document.getElementById('header').style.marginBottom = window.innerHeight/100 * 6;
-  document.getElementById('footer').style.marginTop = window.innerHeight/100 * 8;
-  document.getElementById('main-home').style.marginTop = window.innerHeight/100 * 6;
-  document.getElementById('main-about').style.marginTop = window.innerHeight/100 * 6;
-  document.getElementById('main-works').style.marginTop = window.innerHeight/100 * 6;
-  document.getElementById('main-system').style.marginTop = window.innerHeight/100 * 6;
+  document.getElementById('header').style.marginBottom = window.innerHeight/100 * 8 + "px";
+  document.getElementById('footer').style.marginTop = window.innerHeight/100 * 8 + "px";
+  document.getElementById('main-home').style.marginTop = window.innerHeight/100 * 6 + "px";
+  document.getElementById('main-about').style.marginTop = window.innerHeight/100 * 6 + "px";
+  document.getElementById('main-works').style.marginTop = window.innerHeight/100 * 6 + "px";
+  document.getElementById('main-system').style.marginTop = window.innerHeight/100 * 6 + "px";
 }
 
 // main screen init
