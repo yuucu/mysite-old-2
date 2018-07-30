@@ -10,7 +10,7 @@ pre {
   letter-spacing: -.4em;
   font-size:12px;
   position: relative;
-  width: 568px;
+  width: 512px;
   margin: 0 auto;
   top: 8%;
 }
@@ -30,14 +30,14 @@ pre {
 
 .profile, .skillset, .contact {
   padding: 8px;
-  margin: 16px 0;
+  margin: 16px auto;
 }
 .profile {
-  width: 248px;
+  width: 240px;
 }
 
 .skillset {
-  width: 232px;
+  width: 192px;
 }
 .contact {
   width: 248px;
