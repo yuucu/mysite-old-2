@@ -22,6 +22,7 @@ window.onload = function() {
   mysite.randomSquarePrint = document.getElementById('random-square-print');
   mysite.randomSquareId = '';
   mysite.randomSquareNum = 0;
+  mysite.randomSquareMaxNum = 2000;
 
   mysite.terminal = new Terminal(document);
   // - - - - - - - - - - - - - - 
@@ -67,7 +68,7 @@ window.onload = function() {
 
   mysite.divRandomSquare.onclick = function() {
     // add 1
-    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', 'random');
+    createRandomSquare(mysite.divRandomSquare, Math.floor(Math.random()*1), Math.floor(Math.random()*30), 'absolute', 'random', false);
     if(mysite.randomSquareRunning) {
       clearInterval(mysite.randomSquareId);
       mysite.randomSquareRunning = false;
@@ -75,9 +76,12 @@ window.onload = function() {
       mysite.terminal.updateNormal('square_num: ' + mysite.randomSquareNum);
       mysite.terminal.updateNormal('^C');
     } else {
+      if(mysite.randomSquareNum > mysite.randomSquareMaxNum-1) {
+        mainScreenClear();
+      }
       mysite.theme = 'randomSquare';
-      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', 'random')", 4);
       mysite.randomSquareRunning = true;
+      mysite.randomSquareId = setInterval("createRandomSquare(mysite.screen, Math.floor(Math.random()*1), Math.floor(Math.random()*150), 'fixed', 'random')", 4);
       mysite.terminal.update('start random_square &');
     }
 
@@ -154,10 +158,20 @@ function createCrossBack(target, interval, position, color) {
 }
 
 function createRandomSquare(target, minSize, maxSize, position, color, terminal=true) {
+  if(mysite.randomSquareNum > mysite.randomSquareMaxNum-1) {
+    if(terminal) {
+      clearInterval(mysite.randomSquareId);
+      mysite.randomSquareRunning = false;
+      mysite.terminal.updateNormal('square_num: ' + mysite.randomSquareNum);
+      mysite.terminal.updateNormal('finished');
+      randomSquarePrintStop();
+      return;
+    }
+  }
   mysite.randomSquareNum += 1;
   randomSquarePrintRun();
   if(terminal) {
-  mysite.terminal.updateOver('square_num: ' + mysite.randomSquareNum);
+    mysite.terminal.updateOver('square_num: ' + mysite.randomSquareNum);
   }
 
   let size = Math.floor(Math.random() * (maxSize-minSize)) + minSize;
