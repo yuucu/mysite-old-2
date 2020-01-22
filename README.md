@@ -1,2 +1,2 @@
-# satokibi.github.io
-https://satokibi.github.io/
+# yuucu.github.io/mysite-old-2
+https://yuucu.github.io/mysite-old-2/
